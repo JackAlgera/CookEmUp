@@ -48,3 +48,6 @@ TagManager:
   - name: Ingredient
     uniqueID: 2500626005
     locked: 0
+  - name: IngredientSymbol
+    uniqueID: 3637713379
+    locked: 0

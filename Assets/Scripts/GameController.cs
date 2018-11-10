@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -13,7 +14,15 @@ public class GameController : MonoBehaviour {
     public float timeBTWIngredientSpawn;
     private float currentTimeBTWIngredientSpawn;
 
+    public float timeBTWOrders;
+    private float currentTimeBTWOders;
+
     public float ingredientDescentSpeed = 2f;
+
+    public int score;
+    public Text scoreText;
+
+    public int difficulty;
 
 	void Awake () {
         if(instance == null)
@@ -21,6 +30,9 @@ public class GameController : MonoBehaviour {
             instance = this;
         }
 
+        ResetGame();
+
+        listOfOrders = GameObject.Find("ListOfOrders");
         ingredientHolder = GameObject.Find("IngredientHolder");
 
         GameObject spawnPosS = GameObject.Find("SpawnPositions");
@@ -31,10 +43,10 @@ public class GameController : MonoBehaviour {
             spawnPositions[i] = spawnPosS.transform.GetChild(i).position;
         }
 
+        currentTimeBTWOders = timeBTWOrders / 2f;
         currentTimeBTWIngredientSpawn = timeBTWIngredientSpawn;    
 	}
 	
-	// Update is called once per frame
 	void Update () {
         // Ingredient Spawning
         currentTimeBTWIngredientSpawn -= Time.deltaTime;
@@ -44,6 +56,15 @@ public class GameController : MonoBehaviour {
             currentTimeBTWIngredientSpawn += timeBTWIngredientSpawn;
         }
 
+        // Orders
+        currentTimeBTWOders -= Time.deltaTime;
+        if(currentTimeBTWOders <= 0)
+        {
+            CreateNewOrder(UnityEngine.Random.Range(Mathf.FloorToInt(difficulty / 5f) , difficulty));
+            currentTimeBTWOders += timeBTWOrders;
+        }
+
+        // Collision with ingredients
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = new Vector2((Input.mousePosition.x / Screen.width) * 9f - 4.5f , (Input.mousePosition.y / Screen.height) * 16f - 8f);
@@ -51,7 +72,12 @@ public class GameController : MonoBehaviour {
             if (touchedIngredient != null)
             {
                 Ingredients type = touchedIngredient.transform.parent.GetComponent<Ingredient>().ingredientType;
-                Debug.Log("" + type);
+                if(listOfOrders.transform.childCount > 0)
+                {
+                    listOfOrders.GetComponent<ListOfOrders>().CheckOrder(type);
+                }
+
+
                 touchedIngredient.transform.parent.GetComponent<Ingredient>().ClickDestroy();
             }
         }
@@ -75,6 +101,12 @@ public class GameController : MonoBehaviour {
         */
     }
 
+    public void ResetGame()
+    {
+        score = 0;
+        UpdateScore();
+    }
+
     public void CreateNewOrder(int orderSize)
     {
         listOfOrders.GetComponent<ListOfOrders>().CreateOrder(orderSize);
@@ -82,7 +114,7 @@ public class GameController : MonoBehaviour {
 
     public void SpawnIngredients()
     {
-        int nbrOfIngredientsToSpawn = UnityEngine.Random.Range(1, 4);
+        int nbrOfIngredientsToSpawn = UnityEngine.Random.Range(2, 5);
         int[] spawnLocations = new int[nbrOfIngredientsToSpawn];
         for (int i = 0; i < spawnLocations.Length; i++)
         {
@@ -109,4 +141,20 @@ public class GameController : MonoBehaviour {
 
     }
 
+    public void UpdateScore()
+    {
+        scoreText.text = "" + score;
+    }
+
+    public void IncreaseScore()
+    {
+        score += 1;
+        UpdateScore();
+    }
+
+    public void IncreaseScoreAfterOrder(int orderSize)
+    {
+        score += orderSize * 5;
+        UpdateScore();
+    }
 }

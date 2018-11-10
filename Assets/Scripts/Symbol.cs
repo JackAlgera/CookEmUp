@@ -2,4 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Ingredients { Bread, Tomato, Lettuce }
+public class Symbol : MonoBehaviour {
+
+    public Ingredients ingredientType;
+
+}
