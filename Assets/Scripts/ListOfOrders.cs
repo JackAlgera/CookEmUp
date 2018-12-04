@@ -5,18 +5,13 @@ using UnityEngine;
 public class ListOfOrders : MonoBehaviour {
 
     public GameObject Order;
-    public GameObject[] gameIngredients;
+    public GameObject[] gameIngredientsSymbols;
     public float distanceBTWOrders;
     public GameObject listOfFinishedOrders;
 
     void Start () {
         listOfFinishedOrders = GameObject.Find("ListOfFinishedOrders");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-    }
 
     public void ResetOrders()
     {
@@ -32,7 +27,7 @@ public class ListOfOrders : MonoBehaviour {
         newOrder.transform.Translate(new Vector3(0, -distanceBTWOrders * (float)transform.childCount, 0));
         newOrder.transform.parent = transform;
         newOrder.GetComponent<Order>().orderSize = orderSize;
-        newOrder.GetComponent<Order>().GenerateRandomOrder(gameIngredients);
+        newOrder.GetComponent<Order>().GenerateRandomOrder(gameIngredientsSymbols);
     }
 
     public void CheckOrder(Ingredients type)

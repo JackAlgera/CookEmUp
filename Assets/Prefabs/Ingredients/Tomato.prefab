@@ -54,9 +54,10 @@ GameObject:
   - component: {fileID: 4314577638449688}
   - component: {fileID: 114651915323999072}
   - component: {fileID: 95819963121517128}
+  - component: {fileID: 58282630416452672}
   m_Layer: 0
   m_Name: Tomato
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1878121081508028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6313398, y: 5.785985, z: -0.05810821}
+  m_LocalPosition: {x: -1.4425151, y: 6.8677983, z: -0.05810821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4328772092479126}
@@ -102,6 +103,21 @@ Transform:
   m_Father: {fileID: 4314577638449688}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58282630416452672
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878121081508028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
 --- !u!58 &58336700652820602
 CircleCollider2D:
   m_ObjectHideFlags: 1

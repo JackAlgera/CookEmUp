@@ -10,6 +10,8 @@ public class Order : MonoBehaviour {
     private float currentSymbolPossition = 0f;
     public float orderTime;
 
+    public Ingredients[] listOfIngredients;
+
     void Start () {
         currentOrderIndex = 0;
 	}
@@ -19,14 +21,37 @@ public class Order : MonoBehaviour {
         orderTime -= Time.deltaTime;
 	}
 
-    public void GenerateRandomOrder(GameObject[] ingredients)
+    public void GenerateRandomOrder(GameObject[] gameIngredientsSymbols)
     {
+        listOfIngredients = new Ingredients[orderSize];
+
         for (int i = 0; i < orderSize; i++)
         {
-            GameObject newIngredient = Instantiate(ingredients[Random.Range(0, ingredients.Length)], transform.position, Quaternion.identity);
+            int randomIngrePos = Random.Range(0, gameIngredientsSymbols.Length);
+
+            GameObject newIngredient = Instantiate(gameIngredientsSymbols[randomIngrePos], transform.position, Quaternion.identity);
             newIngredient.transform.parent = transform;
             newIngredient.transform.Translate(new Vector3(currentSymbolPossition, 0, 0));
             currentSymbolPossition += symbolSize;
+
+            // Spawn required ingredients for order
+            listOfIngredients[i] = ((Ingredients)randomIngrePos);
+        }
+        SpawnIngredients();
+    }
+
+    public void SpawnIngredients()
+    {
+        foreach(Ingredients i in listOfIngredients)
+        {
+            GameController.instance.AddIngredientToSpawn(i);
+        }
+
+        // Plus random ingredients
+        int nbrOfRandomIngre = Random.Range(1, 2);
+        for (int i = 0; i < nbrOfRandomIngre; i++)
+        {
+            GameController.instance.AddIngredientToSpawn((Ingredients) Random.Range(0, sizeof(Ingredients)));
         }
     }
 
@@ -40,6 +65,10 @@ public class Order : MonoBehaviour {
         }
         else
         {
+            if(listOfIngredients != null)
+            {
+                SpawnIngredients();
+            }
             ResetOrder();
         }
     }
