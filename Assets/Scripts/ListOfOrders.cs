@@ -18,6 +18,14 @@ public class ListOfOrders : MonoBehaviour {
 
     }
 
+    public void ResetOrders()
+    {
+        foreach (Transform order in transform)
+        {
+            order.GetComponent<Animator>().SetTrigger("Destroy");
+        }
+    }
+
     public void CreateOrder(int orderSize)
     {
         GameObject newOrder = Instantiate(Order, transform.position, Quaternion.identity);

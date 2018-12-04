@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -29,8 +30,6 @@ public class GameController : MonoBehaviour {
         {
             instance = this;
         }
-
-        ResetGame();
 
         listOfOrders = GameObject.Find("ListOfOrders");
         ingredientHolder = GameObject.Find("IngredientHolder");
@@ -101,10 +100,25 @@ public class GameController : MonoBehaviour {
         */
     }
 
-    public void ResetGame()
+    public void RestartGame()
     {
+        CheckHighScore(score);
+
         score = 0;
         UpdateScore();
+
+        listOfOrders.GetComponent<ListOfOrders>().ResetOrders();
+
+        foreach (Transform ingredient in ingredientHolder.transform)
+        {
+            ingredient.GetComponent<Ingredient>().ClickDestroy();
+        }
+    }
+
+    public void GoToMainMenu()
+    {
+        CheckHighScore(score);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void CreateNewOrder(int orderSize)
@@ -156,5 +170,30 @@ public class GameController : MonoBehaviour {
     {
         score += orderSize * 5;
         UpdateScore();
+    }
+
+    public void ActivateObject(GameObject obj)
+    {
+        obj.SetActive(!obj.activeSelf);
+    }
+
+    public void PauseGame()
+    {
+        if(Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void CheckHighScore(int newHighScore)
+    {
+        if (newHighScore > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", newHighScore);
+        }
     }
 }
