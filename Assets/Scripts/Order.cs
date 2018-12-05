@@ -65,6 +65,8 @@ public class Order : MonoBehaviour {
         }
         else
         {
+            TimeController.instance.WrongOrder();
+
             if(listOfIngredients != null)
             {
                 SpawnIngredients();

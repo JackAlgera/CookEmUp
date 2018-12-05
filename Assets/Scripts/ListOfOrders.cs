@@ -42,6 +42,9 @@ public class ListOfOrders : MonoBehaviour {
             {
                 order.Translate(new Vector3(0, distanceBTWOrders, 0));
             }
+
+            // Increase time limit
+            TimeController.instance.FinishOrder();
         }
     }
 }

@@ -7,9 +7,6 @@ public class Ingredient : MonoBehaviour {
     public Ingredients ingredientType;
     public float descentSpeed;
 
-	void Start () {
-	}
-	
 	void FixedUpdate () {
         Vector3 temp = transform.position;
         temp.y -= descentSpeed * Time.deltaTime;
@@ -18,6 +15,10 @@ public class Ingredient : MonoBehaviour {
 
     public void ClickDestroy()
     {
+        if(descentSpeed > 0)
+        {
+            transform.GetChild(0).tag = "Untagged";
+        }
         gameObject.GetComponent<Animator>().SetTrigger("Destroy");
     }
 

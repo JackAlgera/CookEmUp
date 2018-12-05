@@ -28,11 +28,11 @@ public class GameController : MonoBehaviour {
     public int difficulty;
 
     // Variables to spawn ingredients
-    private Stack<GameObject> ingredientsToSpawnBox1 = new Stack<GameObject>();
-    private Stack<GameObject> ingredientsToSpawnBox2 = new Stack<GameObject>();
-    private Stack<GameObject> ingredientsToSpawnBox3 = new Stack<GameObject>();
-    private Stack<GameObject> ingredientsToSpawnBox4 = new Stack<GameObject>();
-    private Stack<GameObject> ingredientsToSpawnBox5 = new Stack<GameObject>();
+    private Stack<Ingredients> ingredientsToSpawnBox1 = new Stack<Ingredients>();
+    private Stack<Ingredients> ingredientsToSpawnBox2 = new Stack<Ingredients>();
+    private Stack<Ingredients> ingredientsToSpawnBox3 = new Stack<Ingredients>();
+    private Stack<Ingredients> ingredientsToSpawnBox4 = new Stack<Ingredients>();
+    private Stack<Ingredients> ingredientsToSpawnBox5 = new Stack<Ingredients>();
 
     private bool canSpawnBox1 = true;
     private bool canSpawnBox2 = true;
@@ -170,27 +170,34 @@ public class GameController : MonoBehaviour {
 
     public void AddIngredientToSpawn(Ingredients ingre)
     {
-        GameObject newIngredient = null;
-
         switch (ingre)
         {
             case Ingredients.Bread:
-                newIngredient = Instantiate(ingredientPrefabs[(int)ingre], spawnPositions[0], Quaternion.identity); // Spawn bread at the first position
-                newIngredient.GetComponent<Ingredient>().descentSpeed = 0f;
-                newIngredient.transform.parent = ingredientHolder.transform;
-                ingredientsToSpawnBox1.Push(newIngredient);
+                ingredientsToSpawnBox1.Push(ingre);
                 break;
             case Ingredients.Tomato:
-                newIngredient = Instantiate(ingredientPrefabs[(int)ingre], spawnPositions[1], Quaternion.identity); // Spawn bread at the first position
-                newIngredient.GetComponent<Ingredient>().descentSpeed = 0f;
-                newIngredient.transform.parent = ingredientHolder.transform;
-                ingredientsToSpawnBox2.Push(newIngredient);
+                ingredientsToSpawnBox2.Push(ingre);
                 break;
             case Ingredients.Lettuce:
-                newIngredient = Instantiate(ingredientPrefabs[(int)ingre], spawnPositions[2], Quaternion.identity); // Spawn bread at the first position
-                newIngredient.GetComponent<Ingredient>().descentSpeed = 0f;
-                newIngredient.transform.parent = ingredientHolder.transform;
-                ingredientsToSpawnBox3.Push(newIngredient);
+                ingredientsToSpawnBox2.Push(ingre);
+                break;
+            case Ingredients.Beef:
+                ingredientsToSpawnBox3.Push(ingre);
+                break;
+            case Ingredients.Chicken:
+                ingredientsToSpawnBox3.Push(ingre);
+                break;
+            case Ingredients.Fish:
+                ingredientsToSpawnBox4.Push(ingre);
+                break;
+            case Ingredients.Cream:
+                ingredientsToSpawnBox4.Push(ingre);
+                break;
+            case Ingredients.Spaghetti:
+                ingredientsToSpawnBox5.Push(ingre);
+                break;
+            case Ingredients.Wine:
+                ingredientsToSpawnBox1.Push(ingre);
                 break;
             default:
                 break;
@@ -201,33 +208,48 @@ public class GameController : MonoBehaviour {
     {
         if(canSpawnBox1 && ingredientsToSpawnBox1.Count != 0)
         {
-            GameObject ingredientToSpawn = ingredientsToSpawnBox1.Pop();
-            ingredientToSpawn.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            Ingredients ingredientToSpawn = ingredientsToSpawnBox1.Pop();
+
+            GameObject newIngredient = Instantiate(ingredientPrefabs[(int)ingredientToSpawn], spawnPositions[0], Quaternion.identity); // Spawn bread at the first position
+            newIngredient.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            newIngredient.transform.parent = ingredientHolder.transform;
             canSpawnBox1 = false;
         }
 
         if (canSpawnBox2 && ingredientsToSpawnBox2.Count != 0)
         {
-            GameObject ingredientToSpawn = ingredientsToSpawnBox2.Pop();
-            ingredientToSpawn.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            Ingredients ingredientToSpawn = ingredientsToSpawnBox2.Pop();
+
+            GameObject newIngredient = Instantiate(ingredientPrefabs[(int)ingredientToSpawn], spawnPositions[1], Quaternion.identity); // Spawn bread at the first position
+            newIngredient.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            newIngredient.transform.parent = ingredientHolder.transform;
             canSpawnBox2 = false;
         }
         if (canSpawnBox3 && ingredientsToSpawnBox3.Count != 0)
         {
-            GameObject ingredientToSpawn = ingredientsToSpawnBox3.Pop();
-            ingredientToSpawn.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            Ingredients ingredientToSpawn = ingredientsToSpawnBox3.Pop();
+
+            GameObject newIngredient = Instantiate(ingredientPrefabs[(int)ingredientToSpawn], spawnPositions[2], Quaternion.identity); // Spawn bread at the first position
+            newIngredient.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            newIngredient.transform.parent = ingredientHolder.transform;
             canSpawnBox3 = false;
         }
         if (canSpawnBox4 && ingredientsToSpawnBox4.Count != 0)
         {
-            GameObject ingredientToSpawn = ingredientsToSpawnBox4.Pop();
-            ingredientToSpawn.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            Ingredients ingredientToSpawn = ingredientsToSpawnBox4.Pop();
+
+            GameObject newIngredient = Instantiate(ingredientPrefabs[(int)ingredientToSpawn], spawnPositions[3], Quaternion.identity); // Spawn bread at the first position
+            newIngredient.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            newIngredient.transform.parent = ingredientHolder.transform;
             canSpawnBox4 = false;
         }
         if (canSpawnBox5 && ingredientsToSpawnBox5.Count != 0)
         {
-            GameObject ingredientToSpawn = ingredientsToSpawnBox5.Pop();
-            ingredientToSpawn.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            Ingredients ingredientToSpawn = ingredientsToSpawnBox5.Pop();
+
+            GameObject newIngredient = Instantiate(ingredientPrefabs[(int)ingredientToSpawn], spawnPositions[4], Quaternion.identity); // Spawn bread at the first position
+            newIngredient.GetComponent<Ingredient>().descentSpeed = descentSpeed;
+            newIngredient.transform.parent = ingredientHolder.transform;
             canSpawnBox5 = false;
         }
     }

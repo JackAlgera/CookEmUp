@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ingredient
   - SpawnPosition
+  - IngredientStopper
   layers:
   - Default
   - TransparentFX
