@@ -10,9 +10,12 @@ public class Order : MonoBehaviour {
     private float currentSymbolPossition = 0f;
     public float orderTime;
 
+    public Animator anim;
+
     public Ingredients[] listOfIngredients;
 
     void Start () {
+        anim = transform.GetComponent<Animator>();
         currentOrderIndex = 0;
 	}
 	
@@ -77,11 +80,13 @@ public class Order : MonoBehaviour {
 
     public void ResetOrder()
     {
-        for (int i = 0; i < currentOrderIndex; i++)
-        {
-            transform.GetChild(i).GetComponent<Animator>().SetTrigger("Reset");
+        anim.SetTrigger("WrongOrder");
 
+        foreach(Transform ingre in transform)
+        {
+            ingre.GetComponent<Animator>().SetTrigger("FlashRed");
         }
+
         currentOrderIndex = 0;
     }
 
@@ -93,5 +98,11 @@ public class Order : MonoBehaviour {
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void MoveUp()
+    {
+        transform.position = Vector3.zero;
+        transform.parent.Translate(new Vector3(0, ListOfOrders.instance.distanceBTWOrders, 0));
     }
 }

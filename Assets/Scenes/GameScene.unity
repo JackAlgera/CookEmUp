@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f960599ca0037645b8251ad965aa645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Order: {fileID: 1910071498476258, guid: 7f2dfed25693e884badefa03f54d6eb7, type: 2}
+  Order: {fileID: 1967276801924592, guid: c4973670b1cf7604ca4880357505b229, type: 2}
   gameIngredientsSymbols:
   - {fileID: 1490219117106982, guid: 1fb8788c6c07158458f9c0ba71efb73d, type: 2}
   - {fileID: 1610990039456000, guid: 5bf36eb46b5a33447b9b23d41631fabd, type: 2}
@@ -1561,7 +1561,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1481723621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: -4.91, z: -0.067212835}
+  m_LocalPosition: {x: -3.7, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1961,7 +1961,7 @@ MonoBehaviour:
   - {fileID: 1071488517417246, guid: 5be2a43d70e4fe945994a3232c8ebf59, type: 2}
   spawnPositions: []
   timeBTWIngredientSpawn: 1
-  timeBTWOrders: 5
+  timeBTWOrders: 3
   ingredientDescentSpeed: 2
   score: 0
   scoreText: {fileID: 2093859419}
@@ -2104,8 +2104,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -657253917
-  m_SortingLayer: 3
+  m_SortingLayerID: -1892261943
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7fb7a08e9e990248ae80ef38a4252b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
