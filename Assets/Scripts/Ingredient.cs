@@ -6,6 +6,8 @@ public class Ingredient : MonoBehaviour {
 
     public Ingredients ingredientType;
     public float descentSpeed;
+    public GameObject flies;
+    public Animator anim;
 
     public float maxRotTime;
     public float currentRotTime;
@@ -15,6 +17,7 @@ public class Ingredient : MonoBehaviour {
 
     private void Awake()
     {
+        anim = gameObject.GetComponent<Animator>();
         currentRotTime = maxRotTime;
         almostRottenTime = maxRotTime / 3;
     }
@@ -33,7 +36,7 @@ public class Ingredient : MonoBehaviour {
         {
             transform.GetChild(0).tag = "Untagged";
         }
-        gameObject.GetComponent<Animator>().SetTrigger("Destroy");
+        anim.SetTrigger("Destroy");
     }
 
     public void Destroy()
@@ -47,14 +50,20 @@ public class Ingredient : MonoBehaviour {
 
         if(currentRotTime < 0)
         {
-            gameObject.GetComponent<Animator>().SetTrigger("Destroy");
-            // TODO : Rot animation
+            anim.SetTrigger("Destroy");
         }
 
         if (currentRotTime < almostRottenTime && !isRotten)
         {
-            // TODO : Change to be rotten
+            SpawnFlies();
+            anim.SetTrigger("Rot");
             isRotten = true;
         }
+    }
+
+    public void SpawnFlies()
+    {
+        GameObject rottenEffect = Instantiate(flies, transform.position, Quaternion.identity);
+        rottenEffect.transform.parent = transform;
     }
 }
