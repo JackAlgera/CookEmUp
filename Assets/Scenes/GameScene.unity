@@ -1068,6 +1068,21 @@ MonoBehaviour:
   bar: {fileID: 778843645}
   currentTime: 0
   maxTime: 45
+  difficultyTimeChanges:
+  - 10
+  - 15
+  - 20
+  - 25
+  - 30
+  difficultyValues:
+  - 1
+  - 1.5
+  - 2
+  - 2.5
+  - 3
+  - 5
+  totTime: 0
+  currentDifficulty: 0
 --- !u!4 &1306023694
 Transform:
   m_ObjectHideFlags: 0
@@ -2325,7 +2340,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 0
 --- !u!222 &2093859420
 CanvasRenderer:
   m_ObjectHideFlags: 0

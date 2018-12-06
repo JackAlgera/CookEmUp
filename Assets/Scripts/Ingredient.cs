@@ -17,6 +17,7 @@ public class Ingredient : MonoBehaviour {
 
     private void Awake()
     {
+        maxRotTime *= Random.Range(0.7f, 1.3f);
         anim = gameObject.GetComponent<Animator>();
         currentRotTime = maxRotTime;
         almostRottenTime = maxRotTime / 3;
@@ -65,5 +66,10 @@ public class Ingredient : MonoBehaviour {
     {
         GameObject rottenEffect = Instantiate(flies, transform.position, Quaternion.identity);
         rottenEffect.transform.parent = transform;
+    }
+
+    public void SpawnAgain()
+    {
+        GameController.instance.AddIngredientToSpawn(ingredientType);
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EDifficulty { Beginner, Easy, Normal, Fast, Hard, Insane}
+
 public class TimeController : MonoBehaviour {
 
     public static TimeController instance;
@@ -14,12 +16,21 @@ public class TimeController : MonoBehaviour {
     public float currentTime;
     public float maxTime;
 
+    public float[] difficultyTimeChanges;
+    public float[] difficultyValues; // Increases time by X% of maxtime when finishing an order -> Better : time goes down faster
+
+    public float totTime;
+    public EDifficulty currentDifficulty;
+
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }
+
+        totTime = 0f;
+        currentDifficulty = EDifficulty.Beginner;
 
         initXScale = bar.transform.localScale.x;
         currentXScale = initXScale;
@@ -28,6 +39,9 @@ public class TimeController : MonoBehaviour {
     }
     
     void Update () {
+        totTime += Time.deltaTime;
+        CheckDifficultyTime();
+
         if(currentTime >= maxTime)
         {
             currentTime = maxTime;
@@ -38,7 +52,7 @@ public class TimeController : MonoBehaviour {
             currentTime = 0;
         }
 
-        currentTime -= Time.deltaTime;
+        currentTime -= Time.deltaTime * difficultyValues[(int)currentDifficulty];
 
         UpdateBar();
 	}
@@ -59,5 +73,13 @@ public class TimeController : MonoBehaviour {
     public void WrongOrder()
     {
         currentTime -= maxTime * 0.1f;
+    }
+
+    public void CheckDifficultyTime()
+    {
+        if(((int)currentDifficulty < sizeof(EDifficulty)) && totTime > difficultyTimeChanges[(int) currentDifficulty])
+        {
+            currentDifficulty = (EDifficulty)((int)currentDifficulty + 1);
+        }
     }
 }
