@@ -105,4 +105,9 @@ public class Order : MonoBehaviour {
         transform.position = Vector3.zero;
         transform.parent.Translate(new Vector3(0, ListOfOrders.instance.distanceBTWOrders, 0));
     }
+
+    public void StopSparkles()
+    {
+        gameObject.GetComponent<ParticleSystem>().Stop();
+    }
 }

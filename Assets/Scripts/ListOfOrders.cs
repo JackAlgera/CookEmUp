@@ -11,6 +11,8 @@ public class ListOfOrders : MonoBehaviour {
     public float distanceBTWOrders;
     public GameObject listOfFinishedOrders;
 
+    public Stack<Order> ordersToSpawn = new Stack<Order>();
+
     private void Awake()
     {
         if(instance == null)
@@ -23,6 +25,14 @@ public class ListOfOrders : MonoBehaviour {
         listOfFinishedOrders = GameObject.Find("ListOfFinishedOrders");
 	}
 
+    private void Update()
+    {
+        if(ordersToSpawn.Count != 0 && transform.childCount < 3)
+        {
+            PlaceOrder();
+        }
+    }
+
     public void ResetOrders()
     {
         foreach (Transform order in transform)
@@ -33,10 +43,19 @@ public class ListOfOrders : MonoBehaviour {
 
     public void CreateOrder(int orderSize)
     {
+        Order newOrder = new Order();
+        newOrder.orderSize = orderSize;
+        ordersToSpawn.Push(newOrder);
+    }
+
+    public void PlaceOrder()
+    {
+        Order orderToServe = ordersToSpawn.Pop();
+
         GameObject newOrder = Instantiate(Order, transform.position, Quaternion.identity);
         newOrder.transform.Translate(new Vector3(0, -distanceBTWOrders * (float)transform.childCount, 0));
         newOrder.transform.parent = transform;
-        newOrder.transform.GetChild(0).GetComponent<Order>().orderSize = orderSize;
+        newOrder.transform.GetChild(0).GetComponent<Order>().orderSize = orderToServe.orderSize;
         newOrder.transform.GetChild(0).GetComponent<Order>().GenerateRandomOrder(gameIngredientsSymbols);
     }
 
