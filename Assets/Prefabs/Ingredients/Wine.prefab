@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientType: 8
   descentSpeed: 2
-  maxRotTime: 20
+  maxRotTime: 15
   currentRotTime: 0
   almostRottenTime: 0
   isRotten: 0
