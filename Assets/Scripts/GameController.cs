@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     public Vector3[] spawnPositions;
     private GameObject ingredientHolder;
     public float timeBTWIngredientSpawn;
-    private float currentTimeBTWIngredientSpawn;
+    //private float currentTimeBTWIngredientSpawn;
 
     public float timeBTWOrders;
     private float currentTimeBTWOrders;
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour {
         }
 
         currentTimeBTWOrders = timeBTWOrders / 2f;
-        currentTimeBTWIngredientSpawn = timeBTWIngredientSpawn;    
+        //currentTimeBTWIngredientSpawn = timeBTWIngredientSpawn;    
 	}
 	
 	void Update () {
@@ -90,13 +90,13 @@ public class GameController : MonoBehaviour {
             Collider2D touchedIngredient = Physics2D.OverlapPoint(mousePos);
             if (touchedIngredient != null && touchedIngredient.tag == "Ingredient")
             {
-                Ingredients type = touchedIngredient.transform.parent.GetComponent<Ingredient>().ingredientType;
+                Ingredients type = touchedIngredient.GetComponent<Ingredient>().ingredientType;
                 if(listOfOrders.transform.childCount > 0)
                 {
                     listOfOrders.GetComponent<ListOfOrders>().CheckOrder(type);
                 }
 
-                touchedIngredient.transform.parent.GetComponent<Ingredient>().ClickDestroy();
+                touchedIngredient.GetComponent<Ingredient>().ClickDestroy();
             }
         }
 

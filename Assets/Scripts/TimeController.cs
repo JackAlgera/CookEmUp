@@ -99,7 +99,7 @@ public class TimeController : MonoBehaviour {
         {
             case EDifficulty.Beginner:
                 extraIngredientsToSpawn = 0;
-                timeBTWOrders = 5f;
+                timeBTWOrders = 2f;
                 numberOfIngredientsInORder = 4;
                 difficultyTimeChanges = 10f;
                 difficultyValues = 1f;
@@ -110,7 +110,7 @@ public class TimeController : MonoBehaviour {
                 timeBTWOrders = 4f;
                 numberOfIngredientsInORder = 4;
                 difficultyTimeChanges = 15f;
-                difficultyValues = 1.5f;
+                difficultyValues = 1.2f;
                 break;
 
             case EDifficulty.Normal:
@@ -118,7 +118,7 @@ public class TimeController : MonoBehaviour {
                 timeBTWOrders = 3f;
                 numberOfIngredientsInORder = 4;
                 difficultyTimeChanges = 20f;
-                difficultyValues = 2f;
+                difficultyValues = 1.5f;
                 break;
 
             case EDifficulty.Fast:
@@ -126,7 +126,7 @@ public class TimeController : MonoBehaviour {
                 timeBTWOrders = 2f;
                 numberOfIngredientsInORder = 4;
                 difficultyTimeChanges = 25f;
-                difficultyValues = 2.5f;
+                difficultyValues = 2f;
                 break;
 
             case EDifficulty.Hard:
@@ -134,7 +134,7 @@ public class TimeController : MonoBehaviour {
                 timeBTWOrders = 1f;
                 numberOfIngredientsInORder = 7;
                 difficultyTimeChanges = 30f;
-                difficultyValues = 4f;
+                difficultyValues = 2.5f;
                 break;
 
             case EDifficulty.Insane:
@@ -142,7 +142,7 @@ public class TimeController : MonoBehaviour {
                 timeBTWOrders = 0.5f;
                 numberOfIngredientsInORder = 8;
                 difficultyTimeChanges = 40f;
-                difficultyValues = 5f;
+                difficultyValues = 3f;
                 break;
 
             default:

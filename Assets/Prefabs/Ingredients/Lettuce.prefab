@@ -20,9 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4670368368476336}
   - component: {fileID: 212174972689837134}
-  - component: {fileID: 58878034021521172}
-  - component: {fileID: 50199572385364902}
-  - component: {fileID: 114119994917561784}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Ingredient
@@ -40,6 +37,8 @@ GameObject:
   - component: {fileID: 4795704346977332}
   - component: {fileID: 114249467854346900}
   - component: {fileID: 95612337726276828}
+  - component: {fileID: 50965886611003812}
+  - component: {fileID: 58990660991981376}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: Untagged
@@ -104,14 +103,14 @@ Transform:
   m_Father: {fileID: 4795704346977332}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50199572385364902
+--- !u!50 &50965886611003812
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182266222007838}
-  m_BodyType: 1
+  m_GameObject: {fileID: 1328433403287016}
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -123,22 +122,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58878034021521172
+  m_Constraints: 5
+--- !u!58 &58990660991981376
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182266222007838}
+  m_GameObject: {fileID: 1328433403287016}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.78
 --- !u!95 &95612337726276828
 Animator:
   serializedVersion: 3
@@ -157,17 +156,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114119994917561784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182266222007838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60259d2b6b339fa4997863e01134d1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114249467854346900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,8 +173,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   maxRotTime: 21
   currentRotTime: 0
+  rb: {fileID: 0}
   almostRottenTime: 0
   isRotten: 0
+  isDestroying: 0
 --- !u!212 &212174972689837134
 SpriteRenderer:
   m_ObjectHideFlags: 1

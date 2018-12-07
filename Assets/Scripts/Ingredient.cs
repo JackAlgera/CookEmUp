@@ -11,6 +11,7 @@ public class Ingredient : MonoBehaviour {
 
     public float maxRotTime;
     public float currentRotTime;
+    public Rigidbody2D rb;
 
     public float almostRottenTime;
     public bool isRotten = false;
@@ -18,18 +19,16 @@ public class Ingredient : MonoBehaviour {
 
     private void Awake()
     {
+        rb = transform.GetComponent<Rigidbody2D>();
         maxRotTime *= Random.Range(0.7f, 1.3f);
         anim = gameObject.GetComponent<Animator>();
         currentRotTime = maxRotTime;
         almostRottenTime = maxRotTime / 3;
+        //rb.velocity = Vector3.down * descentSpeed;
     }
 
     void FixedUpdate () {
         UpdateRotTime();
-
-        Vector3 temp = transform.position;
-        temp.y -= descentSpeed * Time.deltaTime;
-        transform.position = temp;
 	}
 
     public void ClickDestroy()
@@ -59,7 +58,6 @@ public class Ingredient : MonoBehaviour {
 
         if (currentRotTime < almostRottenTime && !isRotten)
         {
-            SpawnFlies();
             anim.SetTrigger("Rot");
             isRotten = true;
         }

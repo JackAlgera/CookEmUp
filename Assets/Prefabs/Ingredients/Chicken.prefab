@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4469167219776952}
   - component: {fileID: 114239070686904788}
   - component: {fileID: 95929701504254260}
+  - component: {fileID: 50018680761098448}
+  - component: {fileID: 58101636569026248}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -53,9 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4256137483240728}
   - component: {fileID: 212646852841882020}
-  - component: {fileID: 58591360842389014}
-  - component: {fileID: 50057837932837820}
-  - component: {fileID: 114842778511175634}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Ingredient
@@ -104,14 +103,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50057837932837820
+--- !u!50 &50018680761098448
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1456601039894464}
-  m_BodyType: 1
+  m_GameObject: {fileID: 1085151217719968}
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -123,22 +122,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &58591360842389014
+  m_Constraints: 5
+--- !u!58 &58101636569026248
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1456601039894464}
+  m_GameObject: {fileID: 1085151217719968}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.78
 --- !u!95 &95929701504254260
 Animator:
   serializedVersion: 3
@@ -174,19 +173,10 @@ MonoBehaviour:
   anim: {fileID: 0}
   maxRotTime: 21
   currentRotTime: 0
+  rb: {fileID: 0}
   almostRottenTime: 0
   isRotten: 0
---- !u!114 &114842778511175634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1456601039894464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60259d2b6b339fa4997863e01134d1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isDestroying: 0
 --- !u!212 &212091681440539636
 SpriteRenderer:
   m_ObjectHideFlags: 1
