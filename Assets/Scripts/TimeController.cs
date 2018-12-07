@@ -16,8 +16,8 @@ public class TimeController : MonoBehaviour {
     public float currentTime;
     public float maxTime;
 
-    public float[] difficultyTimeChanges;
-    public float[] difficultyValues; // Increases time by X% of maxtime when finishing an order -> Better : time goes down faster
+    public float difficultyTimeChanges;
+    public float difficultyValues; // Time goes down X times faster
 
     public float totTime;
     public EDifficulty currentDifficulty;
@@ -37,7 +37,12 @@ public class TimeController : MonoBehaviour {
 
         currentTime = maxTime;
     }
-    
+
+    private void Start()
+    {
+        UpdateGameDifficulty();
+    }
+
     void Update () {
         totTime += Time.deltaTime;
         CheckDifficultyTime();
@@ -52,7 +57,7 @@ public class TimeController : MonoBehaviour {
             currentTime = 0;
         }
 
-        currentTime -= Time.deltaTime * difficultyValues[(int)currentDifficulty];
+        currentTime -= Time.deltaTime * difficultyValues;
 
         UpdateBar();
 	}
@@ -77,9 +82,75 @@ public class TimeController : MonoBehaviour {
 
     public void CheckDifficultyTime()
     {
-        if(((int)currentDifficulty < sizeof(EDifficulty)) && totTime > difficultyTimeChanges[(int) currentDifficulty])
+        if(((int)currentDifficulty < sizeof(EDifficulty)) && totTime > difficultyTimeChanges)
         {
             currentDifficulty = (EDifficulty)((int)currentDifficulty + 1);
+            UpdateGameDifficulty();
         }
+    }
+
+    public void UpdateGameDifficulty()
+    {
+        int extraIngredientsToSpawn = 0;
+        float timeBTWOrders = 0f;
+        int numberOfIngredientsInORder = 2;
+
+        switch (currentDifficulty)
+        {
+            case EDifficulty.Beginner:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 5f;
+                numberOfIngredientsInORder = 4;
+                difficultyTimeChanges = 10f;
+                difficultyValues = 1f;
+                break;
+
+            case EDifficulty.Easy:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 4f;
+                numberOfIngredientsInORder = 4;
+                difficultyTimeChanges = 15f;
+                difficultyValues = 1.5f;
+                break;
+
+            case EDifficulty.Normal:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 3f;
+                numberOfIngredientsInORder = 4;
+                difficultyTimeChanges = 20f;
+                difficultyValues = 2f;
+                break;
+
+            case EDifficulty.Fast:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 2f;
+                numberOfIngredientsInORder = 4;
+                difficultyTimeChanges = 25f;
+                difficultyValues = 2.5f;
+                break;
+
+            case EDifficulty.Hard:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 1f;
+                numberOfIngredientsInORder = 7;
+                difficultyTimeChanges = 30f;
+                difficultyValues = 4f;
+                break;
+
+            case EDifficulty.Insane:
+                extraIngredientsToSpawn = 0;
+                timeBTWOrders = 0.5f;
+                numberOfIngredientsInORder = 8;
+                difficultyTimeChanges = 40f;
+                difficultyValues = 5f;
+                break;
+
+            default:
+                break;
+        }
+        extraIngredientsToSpawn = 0;
+        ListOfOrders.instance.extraIngredientsToSpawn = extraIngredientsToSpawn;
+        GameController.instance.timeBTWOrders = timeBTWOrders;
+        GameController.instance.numberOfIngredientsInORder = numberOfIngredientsInORder;
     }
 }

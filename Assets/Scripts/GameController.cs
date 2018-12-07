@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour {
 
     public float descentSpeed;
     public float sizeOfIngredient;
-    public int difficulty;
+    public int numberOfIngredientsInORder;
 
     // Variables to spawn ingredients
     private Stack<Ingredients> ingredientsToSpawnBox1 = new Stack<Ingredients>();
@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour {
             currentTimeBTWIngredientSpawn += timeBTWIngredientSpawn;
         }
         */
+
         // Spawn Ingredients
         SpawnIngredient();
 
@@ -78,7 +79,7 @@ public class GameController : MonoBehaviour {
         currentTimeBTWOrders -= Time.deltaTime;
         if(currentTimeBTWOrders <= 0 || listOfOrders.transform.childCount == 0)
         {
-            CreateNewOrder(UnityEngine.Random.Range(Mathf.FloorToInt(difficulty / 2f) , difficulty));
+            CreateNewOrder(UnityEngine.Random.Range(Mathf.FloorToInt(numberOfIngredientsInORder / 2f) , numberOfIngredientsInORder));
             currentTimeBTWOrders = timeBTWOrders;
         }
 
@@ -87,7 +88,7 @@ public class GameController : MonoBehaviour {
         {
             Vector2 mousePos = new Vector2((Input.mousePosition.x / Screen.width) * 9f - 4.5f , (Input.mousePosition.y / Screen.height) * 16f - 8f);
             Collider2D touchedIngredient = Physics2D.OverlapPoint(mousePos);
-            if (touchedIngredient != null)
+            if (touchedIngredient != null && touchedIngredient.tag == "Ingredient")
             {
                 Ingredients type = touchedIngredient.transform.parent.GetComponent<Ingredient>().ingredientType;
                 if(listOfOrders.transform.childCount > 0)

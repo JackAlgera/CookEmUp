@@ -1069,7 +1069,7 @@ MonoBehaviour:
   currentTime: 0
   maxTime: 45
   difficultyTimeChanges:
-  - 10
+  - 60
   - 15
   - 20
   - 25
@@ -1569,6 +1569,7 @@ MonoBehaviour:
   - {fileID: 1233377132134658, guid: 2bd3a20c8c9d82c4aad4292ccf2173c5, type: 2}
   distanceBTWOrders: 1.2
   listOfFinishedOrders: {fileID: 0}
+  extraIngredientsToSpawn: 0
 --- !u!4 &1481723623
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +1983,7 @@ MonoBehaviour:
   scoreText: {fileID: 2093859419}
   descentSpeed: 2
   sizeOfIngredient: 0
-  difficulty: 5
+  numberOfIngredientsInORder: 0
 --- !u!1 &1780654171
 GameObject:
   m_ObjectHideFlags: 0

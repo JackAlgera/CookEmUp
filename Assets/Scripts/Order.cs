@@ -7,14 +7,17 @@ public class Order : MonoBehaviour {
     public int orderSize;
     public int currentOrderIndex;
     public float symbolSize;
-    private float currentSymbolPossition = 0f;
+    private float currentSymbolPossition;
     public float orderTime;
+
+    public int extraIngredientsToSpawn;
 
     public Animator anim;
 
     public Ingredients[] listOfIngredients;
 
     void Start () {
+        currentSymbolPossition = 0f;
         anim = transform.GetComponent<Animator>();
         currentOrderIndex = 0;
 	}
@@ -45,13 +48,13 @@ public class Order : MonoBehaviour {
 
     public void SpawnIngredients()
     {
-        foreach(Ingredients i in listOfIngredients)
+        foreach(Ingredients ingredient in listOfIngredients)
         {
-            GameController.instance.AddIngredientToSpawn(i);
+            GameController.instance.AddIngredientToSpawn(ingredient);
         }
 
         // Plus random ingredients
-        int nbrOfRandomIngre = Random.Range(1, 2);
+        int nbrOfRandomIngre = Random.Range((int)Mathf.Floor(extraIngredientsToSpawn/2f), extraIngredientsToSpawn);
         for (int i = 0; i < nbrOfRandomIngre; i++)
         {
             GameController.instance.AddIngredientToSpawn((Ingredients) Random.Range(0, sizeof(Ingredients)));
@@ -70,10 +73,36 @@ public class Order : MonoBehaviour {
         {
             TimeController.instance.WrongOrder();
 
+            /*
+            // Return destroyed ingredient if it's not part of the current order 
+            bool currentOrderContainsIngredient = false;
+            foreach(Ingredients ingr in listOfIngredients)
+            {
+                if(ingr == type)
+                {
+                    currentOrderContainsIngredient = true;
+                }
+            }
+
+            if(!currentOrderContainsIngredient)
+            {
+                GameController.instance.AddIngredientToSpawn(type);
+            }
+            */
+            // Respawn ingredients needed for order
+            GameController.instance.AddIngredientToSpawn(type);
+
+            for (int i = 0; i < currentOrderIndex; i++)
+            {
+                GameController.instance.AddIngredientToSpawn(transform.GetChild(i).GetComponent<Symbol>().ingredientType);
+            }
+
+            /* Spawn all ingredients needed for order -> gets way to out of hand
             if(listOfIngredients != null)
             {
                 SpawnIngredients();
             }
+            */
             ResetOrder();
         }
     }
@@ -109,5 +138,13 @@ public class Order : MonoBehaviour {
     public void StopSparkles()
     {
         gameObject.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public void InitialSetup(int orderSize, int extraIngredientsToSpawn, GameObject[] ingredientSymbols)
+    {
+        this.orderSize = orderSize;
+        this.extraIngredientsToSpawn = extraIngredientsToSpawn;
+
+        GenerateRandomOrder(ingredientSymbols);
     }
 }

@@ -14,6 +14,7 @@ public class Ingredient : MonoBehaviour {
 
     public float almostRottenTime;
     public bool isRotten = false;
+    public bool isDestroying = false;
 
     private void Awake()
     {
@@ -49,9 +50,11 @@ public class Ingredient : MonoBehaviour {
     {
         currentRotTime -= Time.deltaTime;
 
-        if(currentRotTime < 0)
+        if(currentRotTime < 0 && !isDestroying)
         {
-            anim.SetTrigger("Destroy");
+            isDestroying = true;
+            SpawnAgain();
+            ClickDestroy();
         }
 
         if (currentRotTime < almostRottenTime && !isRotten)
