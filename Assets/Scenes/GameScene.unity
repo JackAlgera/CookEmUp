@@ -1557,7 +1557,7 @@ MonoBehaviour:
   - {fileID: 1033083020766192, guid: 45003a0420a171348b89a967c77c4503, type: 2}
   - {fileID: 1694297317179720, guid: a6e545f69db3e644ebd4c0af8e5df246, type: 2}
   - {fileID: 1357599380464828, guid: 2a94ae3dd8a11264ca303b6527114f8e, type: 2}
-  distanceBTWOrders: 1.2
+  distanceBTWOrders: 1.4
   listOfFinishedOrders: {fileID: 0}
   extraIngredientsToSpawn: 0
 --- !u!4 &1481723623
@@ -1978,7 +1978,7 @@ MonoBehaviour:
   listOfOrders: {fileID: 1481723621}
   ingredientPrefabs:
   - {fileID: 1356921643157816, guid: 51a50a7e0ee1d704183bef7fcd9bb1e8, type: 2}
-  - {fileID: 1055631677169578, guid: 7f1c108fb97dc7d4c85839f89e496e4c, type: 2}
+  - {fileID: 1875274000991734, guid: 648ac98d7a72d8240a97c8057b7734dc, type: 2}
   - {fileID: 1359098740695918, guid: 80136d2c9452ad04089211d60510f962, type: 2}
   - {fileID: 1071488517417246, guid: 5be2a43d70e4fe945994a3232c8ebf59, type: 2}
   - {fileID: 1878121081508028, guid: c370687645ef62f4dbdb024a3633ce87, type: 2}
