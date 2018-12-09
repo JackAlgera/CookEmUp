@@ -103,8 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderSize: 4
   currentOrderIndex: 0
-  symbolSize: 1.1
+  symbolSize: 1.3
   orderTime: 5
+  extraIngredientsToSpawn: 0
   anim: {fileID: 0}
   listOfIngredients: 
 --- !u!198 &198619325907756068

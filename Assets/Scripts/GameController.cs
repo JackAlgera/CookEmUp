@@ -17,9 +17,6 @@ public class GameController : MonoBehaviour {
 
     public float timeBTWOrders;
     private float currentTimeBTWOrders;
-
-    public float ingredientDescentSpeed = 2f;
-
     public int score;
     public Text scoreText;
 
@@ -127,6 +124,20 @@ public class GameController : MonoBehaviour {
         UpdateScore();
 
         listOfOrders.GetComponent<ListOfOrders>().ResetOrders();
+
+        ingredientsToSpawnBox1.Clear();
+        ingredientsToSpawnBox2.Clear();
+        ingredientsToSpawnBox3.Clear();
+        ingredientsToSpawnBox4.Clear();
+        ingredientsToSpawnBox5.Clear();
+
+        canSpawnBox1 = true;
+        canSpawnBox2 = true;
+        canSpawnBox3 = true;
+        canSpawnBox4 = true;
+        canSpawnBox5 = true;
+
+        ListOfOrders.instance.ResetOrders();
 
         foreach (Transform ingredient in ingredientHolder.transform)
         {

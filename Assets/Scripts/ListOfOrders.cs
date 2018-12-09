@@ -39,9 +39,10 @@ public class ListOfOrders : MonoBehaviour {
 
     public void ResetOrders()
     {
-        foreach (Transform order in transform)
+        while(transform.childCount > 0)
         {
-            order.GetComponent<Animator>().SetTrigger("Destroy");
+            transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetTrigger("Destroy");
+            transform.GetChild(0).parent = listOfFinishedOrders.transform;
         }
     }
 
