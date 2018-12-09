@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Ingredients { Bread, Tomato, Lettuce, Beef, Chicken, Fish, Cream, Spaghetti, Wine }
+public enum Ingredients { Bread, Spaghetti, Cheese, Wine, Tomatoes, Lettuce, Beef, Chicken, Fish, Eggs } //, Spaghetti, Sausage }

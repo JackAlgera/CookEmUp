@@ -1548,14 +1548,15 @@ MonoBehaviour:
   Order: {fileID: 1967276801924592, guid: c4973670b1cf7604ca4880357505b229, type: 2}
   gameIngredientsSymbols:
   - {fileID: 1490219117106982, guid: 1fb8788c6c07158458f9c0ba71efb73d, type: 2}
+  - {fileID: 1451900992994982, guid: 2bb61da97c8b5f04aa65f766aaf56ba0, type: 2}
+  - {fileID: 1366572034670718, guid: 25e5fea2145592b45a2a4dd0e1cb2baf, type: 2}
+  - {fileID: 1233377132134658, guid: 2bd3a20c8c9d82c4aad4292ccf2173c5, type: 2}
   - {fileID: 1610990039456000, guid: 5bf36eb46b5a33447b9b23d41631fabd, type: 2}
   - {fileID: 1507403082995924, guid: 7fbf40b8482d1c64eaba3c48255cf4fd, type: 2}
   - {fileID: 1475804222571548, guid: 21e8a86140ab2bc4ebc734dbad6d5510, type: 2}
   - {fileID: 1033083020766192, guid: 45003a0420a171348b89a967c77c4503, type: 2}
   - {fileID: 1694297317179720, guid: a6e545f69db3e644ebd4c0af8e5df246, type: 2}
-  - {fileID: 1944402577387452, guid: 40b624c1c90e4784096c4ee62386fac2, type: 2}
-  - {fileID: 1451900992994982, guid: 2bb61da97c8b5f04aa65f766aaf56ba0, type: 2}
-  - {fileID: 1233377132134658, guid: 2bd3a20c8c9d82c4aad4292ccf2173c5, type: 2}
+  - {fileID: 1357599380464828, guid: 2a94ae3dd8a11264ca303b6527114f8e, type: 2}
   distanceBTWOrders: 1.2
   listOfFinishedOrders: {fileID: 0}
   extraIngredientsToSpawn: 0
@@ -1977,21 +1978,22 @@ MonoBehaviour:
   listOfOrders: {fileID: 1481723621}
   ingredientPrefabs:
   - {fileID: 1356921643157816, guid: 51a50a7e0ee1d704183bef7fcd9bb1e8, type: 2}
+  - {fileID: 1055631677169578, guid: 7f1c108fb97dc7d4c85839f89e496e4c, type: 2}
+  - {fileID: 1359098740695918, guid: 80136d2c9452ad04089211d60510f962, type: 2}
+  - {fileID: 1071488517417246, guid: 5be2a43d70e4fe945994a3232c8ebf59, type: 2}
   - {fileID: 1878121081508028, guid: c370687645ef62f4dbdb024a3633ce87, type: 2}
   - {fileID: 1328433403287016, guid: 13a0ef1dfcb72cc48935262fb62f87e7, type: 2}
   - {fileID: 1205278893948816, guid: fdbb388afbb46c94d9093692bf4e4845, type: 2}
   - {fileID: 1085151217719968, guid: b9aa26087875fdf4698e11891de8f831, type: 2}
   - {fileID: 1484592127789236, guid: c46f70386fff52244a41bbecb31132cb, type: 2}
-  - {fileID: 1952899915541902, guid: d881ee7a2a4711646b940f183ba404fb, type: 2}
-  - {fileID: 1329904132458234, guid: 5217afeb53aa54843b4796402e8ef829, type: 2}
-  - {fileID: 1071488517417246, guid: 5be2a43d70e4fe945994a3232c8ebf59, type: 2}
+  - {fileID: 1881002229977006, guid: d59963a109d64ae42817b13c8ebf5be3, type: 2}
   spawnPositions: []
   timeBTWIngredientSpawn: 1
   timeBTWOrders: 3
   ingredientDescentSpeed: 2
   score: 0
   scoreText: {fileID: 2093859419}
-  descentSpeed: 2
+  descentSpeed: 3.5
   sizeOfIngredient: 0
   numberOfIngredientsInORder: 0
 --- !u!1 &1780654171

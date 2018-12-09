@@ -176,32 +176,43 @@ public class GameController : MonoBehaviour {
             case Ingredients.Bread:
                 ingredientsToSpawnBox1.Push(ingre);
                 break;
-            case Ingredients.Tomato:
-                ingredientsToSpawnBox2.Push(ingre);
-                break;
-            case Ingredients.Lettuce:
-                ingredientsToSpawnBox2.Push(ingre);
-                break;
-            case Ingredients.Beef:
-                ingredientsToSpawnBox3.Push(ingre);
-                break;
-            case Ingredients.Chicken:
-                ingredientsToSpawnBox3.Push(ingre);
-                break;
-            case Ingredients.Fish:
-                ingredientsToSpawnBox4.Push(ingre);
-                break;
-            case Ingredients.Cream:
-                ingredientsToSpawnBox4.Push(ingre);
-                break;
             case Ingredients.Spaghetti:
-                ingredientsToSpawnBox5.Push(ingre);
+                ingredientsToSpawnBox1.Push(ingre);
+                break;
+            case Ingredients.Cheese:
+                ingredientsToSpawnBox2.Push(ingre);
                 break;
             case Ingredients.Wine:
+                ingredientsToSpawnBox2.Push(ingre);
+                break;
+            case Ingredients.Tomatoes:
+                ingredientsToSpawnBox3.Push(ingre);
+                break;
+            case Ingredients.Lettuce:
+                ingredientsToSpawnBox3.Push(ingre);
+                break;
+            case Ingredients.Beef:
+                ingredientsToSpawnBox4.Push(ingre);
+                break;
+            case Ingredients.Chicken:
+                ingredientsToSpawnBox4.Push(ingre);
+                break;
+            case Ingredients.Fish:
+                ingredientsToSpawnBox5.Push(ingre);
+                break;
+            case Ingredients.Eggs:
+                ingredientsToSpawnBox5.Push(ingre);
+                break;
+                /*
+            case Ingredients.Spaghetti:
+                ingredientsToSpawnBox1.Push(ingre);
+                break;
+            case Ingredients.Sausage:
                 ingredientsToSpawnBox1.Push(ingre);
                 break;
             default:
                 break;
+                */
         }
     }
 

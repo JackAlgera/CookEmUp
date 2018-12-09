@@ -29,14 +29,17 @@ public class Ingredient : MonoBehaviour {
 
     void FixedUpdate () {
         UpdateRotTime();
+
+        if(rb.velocity.y < -descentSpeed)
+        {
+            Vector3 temp = rb.velocity;
+            temp.y = -descentSpeed;
+            rb.velocity = temp;
+        }
 	}
 
     public void ClickDestroy()
     {
-        if(descentSpeed > 0)
-        {
-            transform.GetChild(0).tag = "Untagged";
-        }
         anim.SetTrigger("Destroy");
     }
 

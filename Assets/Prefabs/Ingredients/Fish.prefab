@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212443965975281374}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Ingredient
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 58044171843599628}
   m_Layer: 0
   m_Name: Fish
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ccd34ebb1fa0941aea51977417ab81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientType: 5
-  descentSpeed: 2
+  ingredientType: 8
+  descentSpeed: 0
   flies: {fileID: 1476841911299830, guid: c9b107dfb41838349a88ec8e3295c8ee, type: 2}
   anim: {fileID: 0}
   maxRotTime: 21
