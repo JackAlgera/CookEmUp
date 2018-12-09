@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuController : MonoBehaviour {
 
     public static MenuController instance;
 
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
 
 	void Awake () {
 		if(instance == null)
