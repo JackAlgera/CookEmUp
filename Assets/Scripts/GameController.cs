@@ -148,7 +148,6 @@ public class GameController : MonoBehaviour {
     public void GoToMainMenu()
     {
         CheckHighScore(score);
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void CreateNewOrder(int orderSize)
