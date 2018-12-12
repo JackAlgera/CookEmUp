@@ -5,9 +5,14 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public enum GameStates { Playing, Paused, Lost}
+
 public class GameController : MonoBehaviour {
 
     public static GameController instance;
+
+    public GameStates currentGameState;
+
     public GameObject listOfOrders;
     public GameObject[] ingredientPrefabs;
     public Vector3[] spawnPositions;
@@ -42,6 +47,8 @@ public class GameController : MonoBehaviour {
         {
             instance = this;
         }
+
+        currentGameState = GameStates.Playing;
 
         listOfOrders = GameObject.Find("ListOfOrders");
         ingredientHolder = GameObject.Find("IngredientHolder");
@@ -143,6 +150,10 @@ public class GameController : MonoBehaviour {
         {
             ingredient.GetComponent<Ingredient>().ClickDestroy();
         }
+
+        TimeController.instance.RestartGame();
+
+        currentGameState = GameStates.Playing;
     }
 
     public void GoToMainMenu()
@@ -343,11 +354,31 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void PauseState()
+    {
+        currentGameState = GameStates.Paused;
+    }
+    public void PlayingState()
+    {
+        currentGameState = GameStates.Playing;
+    }
+    public void LostState()
+    {
+        currentGameState = GameStates.Lost;
+    }
+
     public void CheckHighScore(int newHighScore)
     {
         if (newHighScore > PlayerPrefs.GetInt("HighScore"))
         {
             PlayerPrefs.SetInt("HighScore", newHighScore);
         }
+    }
+
+    public void LoseGame()
+    {
+        CheckHighScore(score);
+        PauseGame();
+        currentGameState = GameStates.Lost;
     }
 }

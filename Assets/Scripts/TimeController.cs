@@ -8,6 +8,8 @@ public class TimeController : MonoBehaviour {
 
     public static TimeController instance;
 
+    public GameObject GameOverPanel;
+
     public float initXScale;
     public float currentXScale;
 
@@ -44,22 +46,38 @@ public class TimeController : MonoBehaviour {
     }
 
     void Update () {
-        totTime += Time.deltaTime;
-        CheckDifficultyTime();
-
-        if(currentTime >= maxTime)
+        switch (GameController.instance.currentGameState)
         {
-            currentTime = maxTime;
+            case GameStates.Playing:
+                totTime += Time.deltaTime;
+                CheckDifficultyTime();
+
+                if (currentTime >= maxTime)
+                {
+                    currentTime = maxTime;
+                }
+
+                if (currentTime < 0)
+                {
+                    currentTime = 0;
+                    GameOverPanel.SetActive(true);
+                    GameController.instance.LoseGame();
+                }
+
+                currentTime -= Time.deltaTime * difficultyValues;
+                UpdateBar();
+                break;
+
+            case GameStates.Paused:
+                break;
+
+            case GameStates.Lost:
+                break;
+            default:
+                break;
         }
 
-        if(currentTime < 0)
-        {
-            currentTime = 0;
-        }
 
-        currentTime -= Time.deltaTime * difficultyValues;
-
-        UpdateBar();
 	}
 
     public void UpdateBar()
@@ -78,6 +96,15 @@ public class TimeController : MonoBehaviour {
     public void WrongOrder()
     {
         currentTime -= maxTime * 0.1f;
+    }
+
+    public void RestartGame()
+    {
+        currentTime = maxTime;
+        currentDifficulty = EDifficulty.Beginner;
+        totTime = 0f;
+        currentXScale = initXScale;
+        UpdateBar();
     }
 
     public void CheckDifficultyTime()
