@@ -27,7 +27,9 @@ public class GameController : MonoBehaviour {
 
     public float descentSpeed;
     public float sizeOfIngredient;
-    public int numberOfIngredientsInORder;
+
+    public int maxIngredientsInOrder;
+    public int minIngredientsInOrder;
 
     // Variables to spawn ingredients
     private Stack<Ingredients> ingredientsToSpawnBox1 = new Stack<Ingredients>();
@@ -83,7 +85,7 @@ public class GameController : MonoBehaviour {
         currentTimeBTWOrders -= Time.deltaTime;
         if(currentTimeBTWOrders <= 0 || listOfOrders.transform.childCount == 0)
         {
-            CreateNewOrder(UnityEngine.Random.Range(Mathf.FloorToInt(numberOfIngredientsInORder / 2f) , numberOfIngredientsInORder));
+            CreateNewOrder(UnityEngine.Random.Range(minIngredientsInOrder, maxIngredientsInOrder));
             currentTimeBTWOrders = timeBTWOrders;
         }
 
@@ -126,33 +128,29 @@ public class GameController : MonoBehaviour {
     public void RestartGame()
     {
         CheckHighScore(score);
-
         score = 0;
         UpdateScore();
-
-        listOfOrders.GetComponent<ListOfOrders>().ResetOrders();
 
         ingredientsToSpawnBox1.Clear();
         ingredientsToSpawnBox2.Clear();
         ingredientsToSpawnBox3.Clear();
         ingredientsToSpawnBox4.Clear();
         ingredientsToSpawnBox5.Clear();
-
         canSpawnBox1 = true;
         canSpawnBox2 = true;
         canSpawnBox3 = true;
         canSpawnBox4 = true;
         canSpawnBox5 = true;
 
-        ListOfOrders.instance.ResetOrders();
+        listOfOrders.GetComponent<ListOfOrders>().ResetOrders();
+        ListOfOrders.instance.ordersToSpawn.Clear();
 
         foreach (Transform ingredient in ingredientHolder.transform)
         {
             ingredient.GetComponent<Ingredient>().ClickDestroy();
         }
 
-        TimeController.instance.RestartGame();
-
+        TimeController.instance.ResetTimer();
         currentGameState = GameStates.Playing;
     }
 

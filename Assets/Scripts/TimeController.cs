@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EDifficulty { Beginner, Easy, Normal, Fast, Hard, Insane}
 
@@ -23,6 +24,8 @@ public class TimeController : MonoBehaviour {
 
     public float totTime;
     public EDifficulty currentDifficulty;
+
+    public Text currentLevel;
 
     private void Awake()
     {
@@ -98,13 +101,15 @@ public class TimeController : MonoBehaviour {
         currentTime -= maxTime * 0.1f;
     }
 
-    public void RestartGame()
+    public void ResetTimer()
     {
         currentTime = maxTime;
         currentDifficulty = EDifficulty.Beginner;
         totTime = 0f;
         currentXScale = initXScale;
         UpdateBar();
+        UpdateGameDifficulty();
+        currentLevel.text = "" + ((int)currentDifficulty);
     }
 
     public void CheckDifficultyTime()
@@ -113,6 +118,7 @@ public class TimeController : MonoBehaviour {
         {
             currentDifficulty = (EDifficulty)((int)currentDifficulty + 1);
             UpdateGameDifficulty();
+            currentLevel.text = "" + ((int)currentDifficulty);
         }
     }
 
@@ -120,57 +126,76 @@ public class TimeController : MonoBehaviour {
     {
         int extraIngredientsToSpawn = 0;
         float timeBTWOrders = 0f;
-        int numberOfIngredientsInORder = 2;
+        int minIngredientsInOrder = 1;
+        int maxIngredientsInOrder = 2;
         //float descentSpeed = 2f;
 
         switch (currentDifficulty)
         {
             case EDifficulty.Beginner:
                 extraIngredientsToSpawn = 0;
-                timeBTWOrders = 2f;
-                numberOfIngredientsInORder = 4;
+                timeBTWOrders = 3.5f;
+
+                minIngredientsInOrder = 2;
+                maxIngredientsInOrder = 2;
+
                 difficultyTimeChanges = 10f;
                 difficultyValues = 1f;
                 break;
 
             case EDifficulty.Easy:
                 extraIngredientsToSpawn = 0;
-                timeBTWOrders = 4f;
-                numberOfIngredientsInORder = 4;
-                difficultyTimeChanges = 15f;
-                difficultyValues = 1.2f;
+                timeBTWOrders = 3.5f;
+
+                minIngredientsInOrder = 2;
+                maxIngredientsInOrder = 4;
+
+                difficultyTimeChanges = 20f;
+                difficultyValues = 1.1f;
                 break;
 
             case EDifficulty.Normal:
                 extraIngredientsToSpawn = 0;
-                timeBTWOrders = 3f;
-                numberOfIngredientsInORder = 4;
-                difficultyTimeChanges = 20f;
-                difficultyValues = 1.5f;
+                timeBTWOrders = 3.5f;
+
+                minIngredientsInOrder = 2;
+                maxIngredientsInOrder = 5;
+
+                difficultyTimeChanges = 40f;
+                difficultyValues = 1.2f;
                 break;
 
             case EDifficulty.Fast:
                 extraIngredientsToSpawn = 0;
-                timeBTWOrders = 2f;
-                numberOfIngredientsInORder = 4;
-                difficultyTimeChanges = 25f;
-                difficultyValues = 2f;
+                timeBTWOrders = 4f;
+
+                minIngredientsInOrder = 4;
+                maxIngredientsInOrder = 5;
+
+                difficultyTimeChanges = 60f;
+                difficultyValues = 1.3f;
                 break;
 
             case EDifficulty.Hard:
-                extraIngredientsToSpawn = 0;
-                timeBTWOrders = 1f;
-                numberOfIngredientsInORder = 7;
-                difficultyTimeChanges = 30f;
-                difficultyValues = 2.5f;
+                extraIngredientsToSpawn = 1;
+                timeBTWOrders = 4f;
+
+                minIngredientsInOrder = 4;
+                maxIngredientsInOrder = 6;
+
+                difficultyTimeChanges = 80f;
+                difficultyValues = 1.4f;
                 break;
 
             case EDifficulty.Insane:
-                extraIngredientsToSpawn = 0;
-                timeBTWOrders = 0.5f;
-                numberOfIngredientsInORder = 8;
-                difficultyTimeChanges = 40f;
-                difficultyValues = 3f;
+                extraIngredientsToSpawn = 2;
+                timeBTWOrders = 4f;
+
+                minIngredientsInOrder = 6;
+                maxIngredientsInOrder = 8;
+
+                difficultyTimeChanges = 120f;
+                difficultyValues = 1.5f;
                 break;
 
             default:
@@ -179,6 +204,7 @@ public class TimeController : MonoBehaviour {
         extraIngredientsToSpawn = 0;
         ListOfOrders.instance.extraIngredientsToSpawn = extraIngredientsToSpawn;
         GameController.instance.timeBTWOrders = timeBTWOrders;
-        GameController.instance.numberOfIngredientsInORder = numberOfIngredientsInORder;
+        GameController.instance.minIngredientsInOrder = minIngredientsInOrder;
+        GameController.instance.maxIngredientsInOrder = maxIngredientsInOrder;
     }
 }
