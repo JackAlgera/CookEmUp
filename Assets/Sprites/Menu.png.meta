@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: cb06738442610a24386fb65a652c47c3
+guid: 2ac329620f1b1064b8c2b4200aec5045
 TextureImporter:
   fileIDToRecycleName:
-    21300000: stock-photo-old-wooden-sign-hanging-signs-1137866924_0
+    21300000: Menu_0
+    21300002: Menu_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -47,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 156, y: 223, z: 140, w: 142}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -96,21 +97,21 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stock-photo-old-wooden-sign-hanging-signs-1137866924_0
+      name: Menu_0
       rect:
         serializedVersion: 2
-        x: 159
-        y: 217
-        width: 1201
-        height: 292
+        x: 197
+        y: 623
+        width: 505
+        height: 825
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a05b7c077c427a4a8bfa63b46c8b1c0
+      spriteID: c06ba09d30a5bf8419db7fb5e6807da3
       vertices: []
       indices: 
       edges: []
@@ -118,7 +119,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 68d35abb4b1c5984991db45885712b7b
+    spriteID: 2de1eafcf453af043b9c8f683a526608
     vertices: []
     indices: 
     edges: []
